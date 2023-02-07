@@ -2,8 +2,8 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <div>
-            <div class="card text-center">
+        <div className='fixed-bottom'>
+            <div class="card text-center ">
                 <div class="card-header">
                     Featured
                 </div>
