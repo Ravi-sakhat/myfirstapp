@@ -1,25 +1,25 @@
 import { Routes, useLocation, useNavigate } from "react-router";
 import { Route } from "react-router";
-import GetStarted from "../getstarted"
-
-
-
+import Layout from "../../layout/layout";
 import React from 'react'
+import Header from "../../layout/header/Header";
+import GetStarted from "./GetStarted";
+import Home from "../home/Home";
 
-const index = () => {
-
-    const location = useLocation();
-    let { pathname } = { ...location };
-    
-    if (["/", "/getstarted"].includes(pathname)) {
+const Pages = () => {
+   
         return (
+
             <>
-                <Routes>
-                    <Route path="/getstarted" element={<GetStarted />} />
-                </Routes>
+                <Layout>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/getstarted" element={<GetStarted />} />
+                    </Routes>
+                </Layout>
             </>
         )
-    }
+    
 }
 
-export default index
+export default Pages

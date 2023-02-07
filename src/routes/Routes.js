@@ -1,8 +1,12 @@
 import React from 'react'
+import Pages from '../pages/getstarted'
 
 const Routes = () => {
+
   return (
-    <div></div>
+    <div>
+       <Pages/> 
+    </div>
   )
 }
 
