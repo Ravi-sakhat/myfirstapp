@@ -11,9 +11,9 @@ export const getCarousel = () => async (dispatch) => {
             type: GET_CAROUSEL_LOADING,
             payload: true
         })
-        await axios.get("https://jsonplaceholder.typicode.com/posts")
+        await axios.get("http://jsonplaceholder.typicode.com/photos")
             .then((res) => {
-                console.log('res', res)
+                console.log('res', res.data)
                 dispatch({
                     type: GET_CAROUSEL,
                     payload: res
@@ -31,15 +31,18 @@ export const getCarousel = () => async (dispatch) => {
             payload: false
         })
 
-    } catch (error) {
+    }
+    catch (err) {
         dispatch({
             type: GET_CAROUSEL_ERROR,
-            paylaod: err
+            payload: err
         })
+
         dispatch({
             type: GET_CAROUSEL_LOADING,
             payload: false
         })
+
         dispatch({
             type: IS_LOADING,
             payload: false

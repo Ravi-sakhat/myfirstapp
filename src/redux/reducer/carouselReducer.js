@@ -3,7 +3,7 @@ import { GET_CAROUSEL, GET_CAROUSEL_ERROR, GET_CAROUSEL_LOADING } from "../type"
 const initialState = {
     getCarouselLoading: false,
     getCarousel: [],
-    getCarouselError: "",
+    getCarouselError: [],
 }
 
 export const carouselReducer = (state = initialState, action) => {
@@ -13,8 +13,7 @@ export const carouselReducer = (state = initialState, action) => {
                 ...state,
                 getCarouselLoading: action.payload,
             };
-            case GET_CAROUSEL:
-            console.log("action", action)
+        case GET_CAROUSEL:
             return {
                 ...state,
                 getCarousel: action.payload,
