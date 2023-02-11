@@ -24,19 +24,6 @@ const Slider = () => {
         }
     }, [carouselData])
 
-
-    // React.useEffect(() => {
-    //     axios.get(baseURL).then((response) => {
-    //       console.log(response.data);
-    //     });
-    //   }, []);
-
-    const styles = {
-        width : "100%",
-        height: "700px"
-    }
-
-
     return (
         <div>
             {/* <div id="carouselExample" classNameNameName="carousel slide">
@@ -44,23 +31,6 @@ const Slider = () => {
 
             {carousle && carousle.length > 0 ? carousle.map((item, i) =>
                 <>
-                    {/* <img src={item.url} alt="" style={{ "width": "100%", "height": "700px" }} classNameNameName='slider-bg' key={i} />
-                            <div classNameNameName="learn-hearo-text">
-                                <div classNameNameName="set-slider-text ps-4">
-                                    <h3>
-                                        {item.title}
-                                    </h3>
-                                </div>
-                                <button classNameNameName="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                                    <span classNameNameName="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span classNameNameName="visually-hidden">Previous</span>
-                                </button>
-                                <button classNameNameName="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                                    <span classNameNameName="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span classNameNameName="visually-hidden">Next</span>
-                                </button>
-                            </div> */}
-
                     <div id="carouselExampleCaptions" className="carousel slide">
                         <div className="carousel-indicators">
                             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
@@ -69,19 +39,19 @@ const Slider = () => {
                         </div>
                         <div className="carousel-inner">
                             <div className="carousel-item active">
-                                <img src={item.url} style={{height: "styles.height", width: "styles.width"}} className="d-block w-100" alt="..." />
+                                <img src={item.url} style={{height: "700px",width: "100%"}} className="d-block w-100" alt="..." />
                                 <div className="carousel-caption d-none d-md-block">
                                     <h5>{item.title}</h5>
                                 </div>
                             </div>
                             <div className="carousel-item">
-                                <img src={item.url} style={styles} className="d-block w-100" alt="..." />
+                                <img src={item.url} style={{height: "700px", width: "100%"}} className="d-block w-100" alt="..." />
                                 <div className="carousel-caption d-none d-md-block">
                                     <h5>{item.title}</h5>
                                 </div>
                             </div>
                             <div className="carousel-item">
-                                <img src={item.url} style={styles} className="d-block w-100" alt="..." />
+                                <img src={item.url} style={{height: "700px", width: "100%"}} className="d-block w-100" alt="..." />
                                 <div className="carousel-caption d-none d-md-block">
                                     <h5>{item.title}</h5>
                                 </div>
