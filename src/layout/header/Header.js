@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
+import Loginmodal from '../../component/modals/Loginmodal'
 
 
 const Header = () => {
+
+    const [loginmodal, setloginmodal] = useState(false)
 
     const navigate = useNavigate()
 
@@ -31,7 +34,7 @@ const Header = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/learn">Learn</Link>
                             </li>
-                            
+
                             {/* <li className="nav-item">
                                 <a className="nav-link disabled">Disabled</a>
                             </li> */}
@@ -55,12 +58,15 @@ const Header = () => {
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                             <button className="btn btn-outline-success" type="submit">Search</button>
                         </form> */}
-                        <div className='justify-content-end'>
-                        <i class="bi bi-person-circle"></i>
+                        <div className='justify-content-end' style={{ cursor: "pointer" }} onClick={() => { setloginmodal(true) }}>
+                            <i class="bi bi-person-circle"></i>
                         </div>
                     </div>
                 </div>
             </nav>
+            {
+                loginmodal && <Loginmodal show={loginmodal} onHide={() => { setloginmodal(false) }} />
+            }
         </div>
     )
 }

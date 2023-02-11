@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <div className='fixed-bottom'>
+        <div className='position-relative'>
             <div class="card text-center ">
                 <div class="card-header">
                     Featured
