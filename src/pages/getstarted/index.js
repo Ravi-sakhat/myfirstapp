@@ -9,15 +9,16 @@ import Footer from "../../layout/footer/Footer";
 import Job from "../job/Job";
 import Schemes from "../schemes/Schemes"
 import Learn from "../learn/Learn";
+import viewAllCourse from "../course/viewAllCourse";
+
+
+
+
+
 
 
 
 const Pages = () => {
-
-    // const location = useLocation();
-    // let { pathname } = { ...location };
-
-    // if (["/", "/getstarted"].includes(pathname)) {
 
         return (
             <>
@@ -28,8 +29,11 @@ const Pages = () => {
                         <Route path="/job" element={<Job/>}/>
                         <Route path="/scheme" element={<Schemes/>}/>
                         <Route path="/learn" element={<Learn/>}/>
+                        <Route path="/viewAllNews" element={<viewAllNews/>}/>
+                        <Route path="/viewAllCourse" element={<viewAllCourse/>}/>
                     </Routes>
                 <Footer/>
+                
             </>
         )
     }
