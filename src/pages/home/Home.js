@@ -25,13 +25,13 @@ const Home = () => {
       img: `${img}`,
       text: "Discover Jobs",
       alts: "Discover Jobs",
-      link: "jobs"
+      link: "job"
     },
     {
       img: `${img}`,
       text: "Explore 200+ Govt Schemes",
       alts: "govt scheme",
-      link: "schemes  "
+      link: "scheme"
     },
     {
       img: `${img}`,

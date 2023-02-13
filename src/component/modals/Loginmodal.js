@@ -15,6 +15,37 @@ const Loginmodal = ({ show, onHide }) => {
 
     })
 
+    const [error, seterror] = useState({
+        mobileErr: "",
+        emailErr: "",
+        passErr: ""
+    })
+
+    const Validation = () => {
+        let re = /^[0-9\b]+$/;
+        let emailRegex = RegExp(/^\S+@\S+\.\S+$/);
+        let flag = false;
+        if (loginBy.mobile === "" && re.test(loginBy.mobile)) {
+            seterror("Please enter your mobile number")
+            flag = true;
+        }
+        else if (loginBy.email === "" && loginBy.email.match(emailRegex)) {
+            seterror("Please enter your EmailID")
+            flag = true;
+        }
+        else if (loginBy.password === "")
+            seterror("Please eneter your password")
+            flag = true;
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(Validation()){
+            return;
+        }
+        console.log('✔✔',"Your data will be submitted" )
+    }
+
     const handleChange = (e) => {
         setInputType(e.target.id)
         if (e.target.id === 'email') {
@@ -61,8 +92,6 @@ const Loginmodal = ({ show, onHide }) => {
                     <Row>
                         <form>
                             <div className="mb-3">
-                                {/* <label for="exampleInputEmail1" className="form-label" id="email">Email address</label>
-                                <input type="email" className="form-control" aria-describedby="emailHelp" id="email" onChange={(e) => handleChange(e)} /> */}
                                 {
                                     !loginType ?
                                         <>
@@ -75,10 +104,14 @@ const Loginmodal = ({ show, onHide }) => {
                                             <input type="text" className="form-control" aria-describedby="emailHelp" name='email' value={loginBy.email} onChange={(e) => handleOnChange(e)} />
                                         </>
                                 }
+                                {/* {
+                                    !loginType ? error.mobileErr && <span>{error.mobileErr}</span> : error.emailErr && <span >{error.emailErr}</span>
+                                } */}
                             </div>
                             <div className="mb-3">
                                 <label for="exampleInputPassword1" className="form-label">Password</label>
-                                <input type="password" className="form-control" id="exampleInputPassword1" />
+                                <input type="password" className="form-control" id="exampleInputPassword1" name='password' />
+                                {/* <span>{error.passErr}</span> */}
                             </div>
                             <div className="mb-3 form-check">
                                 <div>
@@ -86,37 +119,17 @@ const Loginmodal = ({ show, onHide }) => {
                                     <label className="form-check-label" for="exampleCheck1">Via Mobile</label>
                                 </div>
                                 <div>
-                                    <input type="radio" className="form-check-input"  id="email"  onChange={(e) => handleChange(e)}/>
+                                    <input type="radio" className="form-check-input" checked={loginType ? true : false} id="email" onChange={(e) => handleChange(e)} />
                                     <label className="form-check-label" for="exampleCheck1">Via EmailId</label>
                                 </div>
                             </div>
-                            <button type="submit" className="btn btn-primary">Submit</button>
+                            <button type="submit" className="btn btn-primary" onClick={(e)=>handleSubmit(e)}>Submit</button>
                         </form>
                     </Row>
                 </Row>
             </Modal.Body>
         </Modal>
     );
-
-
-    // function App() {
-    //   const [modalShow, setModalShow] = React.useState(false);
-
-    //   return (
-    //     <>
-    //       <Button variant="primary" onClick={() => setModalShow(true)}>
-    //         Launch vertically centered modal
-    //       </Button>
-
-    //       <MyVerticallyCenteredModal
-    //         show={modalShow}
-    //         onHide={() => setModalShow(false)}
-    //       />
-    //     </>
-    //   );
-    // }
-
-    // render(<App />);
 
 }
 
