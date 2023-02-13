@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getCarousel } from '../../redux/action/carouselAction'
 import { useEffect, useState } from 'react'
 
-// const baseURL = "https://jsonplaceholder.typicode.com/posts"
+
+
 
 const Slider = () => {
 
@@ -12,7 +13,7 @@ const Slider = () => {
 
     const dispatch = useDispatch()
     const carouselData = useSelector((state) => state.carouselData.getCarousel)
-    console.log('carouselData', carouselData)
+    // console.log('carouselData', carouselData)
 
     useEffect(() => {
         dispatch(getCarousel())
@@ -26,9 +27,6 @@ const Slider = () => {
 
     return (
         <div>
-            {/* <div id="carouselExample" classNameNameName="carousel slide">
-                <div classNameNameName="carousel-inner"> */}
-
             {carousle && carousle.length > 0 ? carousle.map((item, i) =>
                 <>
                     <div id="carouselExampleCaptions" className="carousel slide">
