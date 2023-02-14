@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 import { Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useNavigate } from 'react-router-dom';
 import img from '../../assests/img/img/6gan.png'
 
 const Loginmodal = ({ show, onHide }) => {
+
+    const navigate = useNavigate();
 
     const [loginType, setLoginType] = useState(false);
     const [inputType, setInputType] = useState('mobile');
@@ -14,6 +17,8 @@ const Loginmodal = ({ show, onHide }) => {
         password: ""
 
     })
+
+    const [UserType, setUserType] = useState("user")
 
     const [error, seterror] = useState({
         mobileErr: "",
@@ -28,26 +33,27 @@ const Loginmodal = ({ show, onHide }) => {
         
 
         
-        if (loginBy.mobile === "" || re.test(loginBy.mobile)) {
+        if (!loginBy.mobile === "" && re.test(loginBy.mobile)) {
             error.mobileErr = "This field is required"
             flag = true;
         }
 
-        if (loginBy.mobile === "" && loginBy.mobile < 10) {
+        if (!loginBy.mobile === "" && loginBy.mobile < 10) {
             error.mobileErr = "This field is required"
             flag = true;
         }
     
-        if (loginBy.email === "" && loginBy.email.match(emailRegex)) {
+        if (!loginBy.email === "" && loginBy.email.match(emailRegex)) {
             error.mobileErr = "This field is required"
             flag = true;
         }
 
-        if (loginBy.password === "") {
+        if (!loginBy.password === "") {
             error.mobileErr = "This field is required"
             flag = true;
         }
-        return seterror(error)
+        seterror(error)
+        return flag
 }
 
 const handleSubmit = (e) => {
@@ -57,6 +63,10 @@ const handleSubmit = (e) => {
     }
     console.log('✔✔', "Your data will be submitted")
 }
+
+// const handleRegister = () => {
+//     navigate()
+// }
 
 const handleChange = (e) => {
     setInputType(e.target.id)
@@ -71,6 +81,12 @@ const handleOnChange = (e) => {
     setloginBy({ ...loginBy, [e.target.name]: e.target.value })
 }
 
+const handleActiveUser = () => {
+    document.getElementById("user");{
+        
+    }
+}
+
 
 return (
     <Modal
@@ -80,7 +96,7 @@ return (
         show
     //   onHide={()=>onHide('')}
     >
-        <Modal.Header closeButton onClick={() => { onHide(false) }} >
+        <Modal.Header closeButton onClick={() => { onHide(true) }} >
             <Modal.Title>
                 I want login as
             </Modal.Title>
@@ -90,9 +106,9 @@ return (
             <Row>
                 <Row>
                     <Col className='d-flex justify-content-center'>
-                        <button className='btn btn-primary mx-1'>Candidate</button>
-                        <button className='btn btn-primary mx-1'>Employer</button>
-                        <button className='btn btn-primary mx-1'>Partner</button>
+                        <button  id='user' onClick={() => setUserType("user")} className={`btn btn-outline-primary mx-1 ${UserType === "user" ? "active" : "disable"}`}>Candidate</button>
+                        <button  id='employer' onClick={() => setUserType("employer")} className={`btn btn-outline-primary mx-1 ${UserType === "employer" ? "active" : "disable"}`}>Employer</button>
+                        <button  id='partner' onClick={() => setUserType("partner")} className={`btn btn-outline-primary mx-1 ${UserType === "partner" ? "active" : "disable"}`}>Partner</button>
                     </Col>
                 </Row>
                 <Row className='my-2'>
@@ -120,7 +136,6 @@ return (
                         <div className="mb-3">
                             <label for="exampleInputPassword1" className="form-label">Password</label>
                             <input type="password" className="form-control" id="exampleInputPassword1" name='password' />
-                            {/* <span>{error.passErr}</span> */}
                         </div>
                         <div className="mb-3 form-check">
                             <div>
@@ -132,7 +147,8 @@ return (
                                 <label className="form-check-label" for="exampleCheck1">Via EmailId</label>
                             </div>
                         </div>
-                        <button type="submit" className="btn btn-primary" onClick={(e) => handleSubmit(e)}>Submit</button>
+                        <button type="submit" className="btn btn-primary" onClick={(e) => handleSubmit(e)}>Login</button>
+                        <p>Don't have an account with us? <button className='btn btn-sm btn-danger' onClick={()=> onHide("register")}>Register</button></p>
                     </form>
                 </Row>
             </Row>

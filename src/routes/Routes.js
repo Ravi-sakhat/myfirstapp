@@ -1,5 +1,6 @@
 import React from 'react'
-import Pages from '../pages/getstarted'
+import Pages from '../pages'
+
 
 const Routes = () => {
 

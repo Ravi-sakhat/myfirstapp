@@ -1,9 +1,9 @@
 import React from 'react'
 
-const viewAllNews = () => {
+const NewsUpdate = () => {
   return (
     <div>viewAllNews</div>
   )
 }
 
-export default viewAllNews
+export default NewsUpdate
