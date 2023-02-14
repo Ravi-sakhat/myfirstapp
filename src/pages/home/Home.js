@@ -5,6 +5,7 @@ import img from '../../assests/img/img/6gan.png'
 import { useNavigate } from 'react-router-dom'
 import Loginmodal from '../../component/modals/Loginmodal'
 import AquireCard from '../../common/AquireCard'
+import JobCard from '../../common/JobCard'
 
 
 
@@ -13,7 +14,7 @@ import AquireCard from '../../common/AquireCard'
 const Home = () => {
 
   const navigate = useNavigate()
-  
+
 
   const [loginmodal, setloginmodal] = useState(false)
 
@@ -78,7 +79,13 @@ const Home = () => {
         <div>
           <h3 className='text-center'>ACQUIRE NEW SKILLS</h3>
         </div>
-        <AquireCard/>
+        <AquireCard />
+      </Container>
+      <Container>
+        <div>
+          <h3 className='text-center'>DISCOVER NEW OPPORTUNITIES</h3>
+        </div>
+        <JobCard/>
       </Container>
     </div>
   )

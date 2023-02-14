@@ -1,9 +1,9 @@
 import React from 'react'
 
-const viewAllCourse = () => {
+const Viewallcourse = () => {
   return (
     <div>viewAllCourse</div>
   )
 }
 
-export default viewAllCourse
+export default Viewallcourse

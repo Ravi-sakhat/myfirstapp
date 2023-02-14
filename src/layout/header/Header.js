@@ -2,17 +2,38 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
 import Loginmodal from '../../component/modals/Loginmodal'
+import RegisterYourAccount from '../../component/modals/RegisterYourAccount'
 
 
 const Header = () => {
 
     const [loginmodal, setloginmodal] = useState(false)
+    const [RegisterAccount, setRegisterAccount] = useState(false)
 
     const navigate = useNavigate()
 
 
     const handleGetStarted = () => {
         navigate("/getstarted")
+    }
+
+    const logginPopup = (item) => {
+        if (item === "register") {
+            setRegisterAccount(true)
+            setloginmodal(false)
+        }
+        else {
+            setloginmodal(false)
+        }
+    }
+
+    const registerYourAccount = (item) => {
+        if (item === "login") {
+            setloginmodal(true)
+            setRegisterAccount(false)
+        }else {
+            setRegisterAccount(false)
+        }
     }
 
     return (
@@ -65,7 +86,10 @@ const Header = () => {
                 </div>
             </nav>
             {
-                loginmodal && <Loginmodal show={loginmodal} onHide={() => { setloginmodal(false) }} />
+                loginmodal && <Loginmodal show={loginmodal} onHide={(item) => logginPopup(item)} />
+            }
+            {
+                RegisterAccount && <RegisterYourAccount show={RegisterAccount} onHide={(item) => { registerYourAccount(item) }} />
             }
         </div>
     )
